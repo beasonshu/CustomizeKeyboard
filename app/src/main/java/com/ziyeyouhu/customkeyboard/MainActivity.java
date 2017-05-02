@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private LinearLayout rootView;
     private ScrollView scrollView;
     private EditText normalEd;
-    private EditText specialEd;
+    private EditText specialEd1,specialEd;
     private KeyboardUtil keyboardUtil;
 
     @Override
@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         rootView = (LinearLayout) findViewById(R.id.root_view);
         scrollView = (ScrollView) findViewById(R.id.sv_main);
+
+        specialEd1 = (EditText) findViewById(R.id.special_ed1);
 
         normalEd = (EditText) findViewById(R.id.normal_ed);
         specialEd = (EditText) findViewById(R.id.special_ed);
@@ -57,7 +59,8 @@ public class MainActivity extends AppCompatActivity {
         keyboardUtil.setKeyBoardStateChangeListener(new KeyBoardStateListener());
         // monitor the finish or next Key
         keyboardUtil.setInputOverListener(new inputOverListener());
-        specialEd.setOnTouchListener(new KeyboardTouchListener(keyboardUtil, KeyboardUtil.INPUTTYPE_ABC, -1));
+        specialEd1.setOnTouchListener(new KeyboardTouchListener(keyboardUtil, KeyboardUtil.INPUTTYPE_NUM_ABC, -1));
+        specialEd.setOnTouchListener(new KeyboardTouchListener(keyboardUtil, KeyboardUtil.INPUTTYPE_NUM, -1));
     }
 
     class KeyBoardStateListener implements KeyboardUtil.KeyBoardStateChangeListener {
